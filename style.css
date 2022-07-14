@@ -1,0 +1,16 @@
+*{
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.flex-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+button{
+    padding: 14px 40px;
+    border-radius: 12px;
+    border: none;
+    cursor: pointer;
+}
