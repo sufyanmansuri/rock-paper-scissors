@@ -1,16 +1,45 @@
-*{
+* {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
 }
 .flex-container {
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
+.flex-container-col {
+  height: 100%;
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+.big-text {
+  font-size: 64px;
+}
+.selection {
+  font-size: 36px;
+}
+.status {
+  font-size: 36px;
+}
+button {
+  margin-left: 20px;
+  margin-right: 20px;
+  padding: 40px 40px 190px 40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+}
 
-button{
-    padding: 14px 40px;
-    border-radius: 12px;
-    border: none;
-    cursor: pointer;
+.emoji {
+  font-size: 100px;
 }

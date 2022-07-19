@@ -1,5 +1,41 @@
 const options = ["rock", "paper", "scissors"];
 
+const buttons = document.querySelectorAll("button");
+buttons.forEach((button) => button.addEventListener("click", play));
+
+function getEmoji(text) {
+  let emoji = "";
+  switch (text) {
+    case "rock":
+      emoji = "✊";
+      break;
+    case "paper":
+      emoji = "🤚";
+      break;
+    case "scissors":
+      emoji = "✌";
+      break;
+  }
+  return emoji;
+}
+
+function play(e) {
+  playerSelection = e.target.getAttribute("data-selection");
+  computerSelection = computerPlay();
+  computerSelectionEmoji = getEmoji(computerSelection);
+  playerSelectionEmoji = getEmoji(playerSelection);
+  const selectionDiv = document.querySelector(".selection");
+  selectionDiv.textContent = `You: ${playerSelectionEmoji} Computer: ${computerSelectionEmoji}`;
+  winner = playRound(playerSelection, computerSelection);
+  const result = document.querySelector(".result");
+  if (winner == "player") {
+    result.textContent = "Congratulations! You Won";
+  } else if (winner == "computer") {
+    result.textContent = "Sorry! You Lost.";
+  } else if (winner == "tie") {
+    result.textContent = "Tie, play again.";
+  }
+}
 function computerPlay() {
   return options[Math.floor(Math.random() * options.length)];
 }
@@ -30,49 +66,49 @@ function playRound(playerSelection, computerSelection) {
   }
 }
 
-function game() {
-  let playerScore = 0,
-    computerScore = 0;
-  for (let i = 0; i < 5; i++) {
-    let playerSelection = playerInput(),
-      computerSelection = computerPlay(),
-      roundResult = playRound(playerSelection, computerSelection);
-    if (roundResult == "player") {
-      console.log(
-        `You Win! ${playerSelection
-          .charAt(0)
-          .toUpperCase()
-          .concat(playerSelection.slice(1))} beats ${computerSelection
-          .charAt(0)
-          .toUpperCase()
-          .concat(computerSelection.slice(1))}`
-      );
-      playerScore++;
-    } else if (roundResult == "computer") {
-      console.log(
-        `You Lose! ${computerSelection
-          .charAt(0)
-          .toUpperCase()
-          .concat(computerSelection.slice(1))} beats ${playerSelection
-          .charAt(0)
-          .toUpperCase()
-          .concat(playerSelection.slice(1))}`
-      );
-      computerScore++;
-    } else if (roundResult == "tie") {
-      console.log(`Tie`);
-    }
-    console.log(`Score - You: ${playerScore} Computer: ${computerScore}`);
-  }
-  if (playerScore > computerScore) {
-    console.log(
-      `Congratulations! You won the match by ${playerScore}-${computerScore}.`
-    );
-  } else if (playerScore < computerScore) {
-    console.log(
-      `Sorry! You lost the match by ${playerScore}-${computerScore}.`
-    );
-  } else {
-    console.log(`It's a tie! You: ${playerScore} Computer: ${computerScore}.`);
-  }
-}
+// function game() {
+//   let playerScore = 0,
+//     computerScore = 0;
+//   for (let i = 0; i < 5; i++) {
+//     let playerSelection = playerInput(),
+//       computerSelection = computerPlay(),
+//       roundResult = playRound(playerSelection, computerSelection);
+//     if (roundResult == "player") {
+//       console.log(
+//         `You Win! ${playerSelection
+//           .charAt(0)
+//           .toUpperCase()
+//           .concat(playerSelection.slice(1))} beats ${computerSelection
+//           .charAt(0)
+//           .toUpperCase()
+//           .concat(computerSelection.slice(1))}`
+//       );
+//       playerScore++;
+//     } else if (roundResult == "computer") {
+//       console.log(
+//         `You Lose! ${computerSelection
+//           .charAt(0)
+//           .toUpperCase()
+//           .concat(computerSelection.slice(1))} beats ${playerSelection
+//           .charAt(0)
+//           .toUpperCase()
+//           .concat(playerSelection.slice(1))}`
+//       );
+//       computerScore++;
+//     } else if (roundResult == "tie") {
+//       console.log(`Tie`);
+//     }
+//     console.log(`Score - You: ${playerScore} Computer: ${computerScore}`);
+//   }
+//   if (playerScore > computerScore) {
+//     console.log(
+//       `Congratulations! You won the match by ${playerScore}-${computerScore}.`
+//     );
+//   } else if (playerScore < computerScore) {
+//     console.log(
+//       `Sorry! You lost the match by ${playerScore}-${computerScore}.`
+//     );
+//   } else {
+//     console.log(`It's a tie! You: ${playerScore} Computer: ${computerScore}.`);
+//   }
+// }
