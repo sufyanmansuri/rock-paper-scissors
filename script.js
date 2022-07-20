@@ -1,5 +1,8 @@
 const options = ["rock", "paper", "scissors"];
-
+let score = {
+  player: 0,
+  computer: 0,
+};
 const buttons = document.querySelectorAll("button");
 buttons.forEach((button) => button.addEventListener("click", play));
 
@@ -10,13 +13,25 @@ function getEmoji(text) {
       emoji = "✊";
       break;
     case "paper":
-      emoji = "🤚";
+      emoji = "✋";
       break;
     case "scissors":
       emoji = "✌";
       break;
   }
   return emoji;
+}
+function checkWinner() {
+  const scoreDiv = document.querySelector(".score");
+  if (score.player == 5) {
+    scoreDiv.textContent = `Congratulations🎉! You won the match by ${score.player} - ${score.computer}.`;
+    score.player = 0;
+    score.computer = 0;
+  } else if (score.computer == 5) {
+    scoreDiv.textContent = `Sorry🤎! You lost the match by ${score.player} - ${score.computer}.`;
+    score.player = 0;
+    score.computer = 0;
+  }
 }
 
 function play(e) {
@@ -38,12 +53,18 @@ function play(e) {
   winner = playRound(playerSelection, computerSelection);
   const result = document.querySelector(".result");
   if (winner == "player") {
+    score.player++;
     result.textContent = "Congratulations! You Won";
   } else if (winner == "computer") {
+    score.computer++;
     result.textContent = "Sorry! You Lost.";
   } else if (winner == "tie") {
     result.textContent = "Tie, play again.";
   }
+  // Update Score
+  const scoreDiv = document.querySelector(".score");
+  scoreDiv.textContent = `${score.player} - ${score.computer}`;
+  checkWinner();
 }
 function computerPlay() {
   return options[Math.floor(Math.random() * options.length)];

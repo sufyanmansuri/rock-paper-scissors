@@ -23,10 +23,7 @@ body {
 .big-text {
   font-size: 64px;
 }
-.selection {
-  font-size: 36px;
-}
-.status {
+.secondary-text{
   font-size: 36px;
 }
 button {

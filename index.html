@@ -11,14 +11,17 @@
   </head>
   <body>
     <div class="flex-container-col">
-      <div class="flex-container big-text">Rock Paper Scissors</div>
+      <div class="flex-container" style="flex-direction: column;">
+        <div class="big-text">Rock Paper Scissors</div>
+        <div class="score secondary-text">0 - 0</div>
+      </div>
       <div class="flex-container">
         <button data-selection="rock" class="emoji test">&#9994;</button>
         <button data-selection="paper" class="emoji">&#9995;</button>
         <button data-selection="scissors" class="emoji">&#9996;</button>
       </div>
-      <div class="flex-container status" style="flex-direction: column">
-        <div class="selection"><br /></div>
+      <div class="flex-container status secondary-text" style="flex-direction: column">
+        <div class="selection secondary-text"><br /></div>
         <div class="result">Click a button to play!</div>
       </div>
     </div>
