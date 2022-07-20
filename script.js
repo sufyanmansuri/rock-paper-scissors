@@ -24,6 +24,16 @@ function getEmoji(text) {
 function checkWinner() {
   const scoreDiv = document.querySelector(".score");
   if (score.player == 5) {
+    // Change favicon if player wins
+    const favicon = document.querySelector("link[rel=icon]");
+    favicon.setAttribute(
+      "href",
+      `data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🎉</text></svg>`
+    );
+
+    // Change title
+    const title = document.querySelector("title");
+    title.textContent = "You Won! ❤";
     scoreDiv.textContent = `Congratulations🎉! You won the match by ${score.player} - ${score.computer}.`;
     score.player = 0;
     score.computer = 0;
@@ -39,6 +49,10 @@ function play(e) {
   computerSelection = computerPlay();
   computerSelectionEmoji = getEmoji(computerSelection);
   playerSelectionEmoji = getEmoji(playerSelection);
+
+  // Change title back to "Rock Paper Scissors"
+  const title = document.querySelector("title");
+  if (title != "Rock Paper Scissors") title.textContent = "Rock Paper Scissors";
 
   // Change favicon based on player input
   const favicon = document.querySelector("link[rel=icon]");
