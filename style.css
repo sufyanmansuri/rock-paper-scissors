@@ -23,8 +23,11 @@ body {
 .big-text {
   font-size: 64px;
 }
-.secondary-text{
+.sub-text{
   font-size: 36px;
+}
+.secondary-text{
+  font-size: 24px;
 }
 button {
   margin-left: 20px;

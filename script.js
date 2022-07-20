@@ -68,12 +68,12 @@ function play(e) {
   const result = document.querySelector(".result");
   if (winner == "player") {
     score.player++;
-    result.textContent = "Congratulations! You Won";
+    result.textContent = "You Won this round!";
   } else if (winner == "computer") {
     score.computer++;
-    result.textContent = "Sorry! You Lost.";
+    result.textContent = "You lost this round.";
   } else if (winner == "tie") {
-    result.textContent = "Tie, play again.";
+    result.textContent = "This round resulted in a tie.";
   }
   // Update Score
   const scoreDiv = document.querySelector(".score");
