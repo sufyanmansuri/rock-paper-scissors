@@ -23,10 +23,10 @@ body {
 .big-text {
   font-size: 64px;
 }
-.sub-text{
+.sub-text {
   font-size: 36px;
 }
-.secondary-text{
+.secondary-text {
   font-size: 24px;
 }
 button {
@@ -42,4 +42,10 @@ button {
 
 .emoji {
   font-size: 100px;
+  transition: all 0.07s ease;
+}
+.playing {
+  transform: scale(1.1);
+  border-color: #ffc600;
+  box-shadow: 0 0 1rem #ffc600;
 }

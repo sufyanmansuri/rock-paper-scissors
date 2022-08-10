@@ -49,7 +49,10 @@ function play(e) {
   computerSelection = computerPlay();
   computerSelectionEmoji = getEmoji(computerSelection);
   playerSelectionEmoji = getEmoji(playerSelection);
-
+  const key = document.querySelector(
+    `button[data-selection="${playerSelection}"]`
+  );
+  key.classList.add("playing");
   // Change title back to "Rock Paper Scissors"
   const title = document.querySelector("title");
   if (title != "Rock Paper Scissors") title.textContent = "Rock Paper Scissors";
@@ -108,6 +111,13 @@ function playRound(playerSelection, computerSelection) {
   } else {
     return "computer";
   }
+}
+const keys = Array.from(document.querySelectorAll(".emoji"));
+keys.forEach((key) => key.addEventListener("transitionend", removeTransition));
+
+function removeTransition(e) {
+  if (e.propertyName !== "transform") return;
+  e.target.classList.remove("playing");
 }
 
 // function game() {
